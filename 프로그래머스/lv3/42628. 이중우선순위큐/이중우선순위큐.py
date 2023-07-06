@@ -1,22 +1,23 @@
 import heapq
 
 def solution(operations):
-    min_heap = []
+    heap = []
     
     for op in operations:
         o, n = op.split()
         n = int(n)
         
         if o == "I":
-            heapq.heappush(min_heap, n)
+            heapq.heappush(heap, n)
         else:
-            if len(min_heap) > 0:
+            if len(heap) > 0:
                 if n == -1:
-                    heapq.heappop(min_heap)
+                    heapq.heappop(heap)
                 else:
-                    min_heap.remove(max(min_heap))
+                    heap.remove(max(heap))
+                    heapq.heapify(heap)
 
-    if len(min_heap) == 0:
+    if len(heap) == 0:
         return [0, 0]
     else:
-        return [max(min_heap), min_heap[0]]
+        return [max(heap), heap[0]]
