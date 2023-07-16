@@ -1,12 +1,16 @@
+answer = 0
+
+def dfs(i, result, numbers, target):
+    global answer
+    if i == len(numbers):
+        if result == target:
+            answer += 1
+            return
+    else:
+        dfs(i+1, result+numbers[i], numbers, target)
+        dfs(i+1, result-numbers[i], numbers, target)
+
 def solution(numbers, target):
-    leaves = [0]
-    
-    for n in numbers:
-        sums = []
-        for leaf in leaves:
-            sums.append(leaf+n)
-            sums.append(leaf-n)
-        leaves = sums
-    
-    answer = leaves.count(target)
+    result = 0
+    dfs(0, result, numbers, target)
     return answer
