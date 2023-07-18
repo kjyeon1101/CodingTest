@@ -30,7 +30,7 @@ def solution(begin, target, words):
         idx = now[0] + 1
         
         if now[1] == target:
-            answer = idx - 1
+            answer = now[0]
             break
             
         if len(words) <= idx:
