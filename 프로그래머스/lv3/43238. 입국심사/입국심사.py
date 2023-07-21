@@ -1,6 +1,6 @@
 def solution(n, times):
     answer = 0
-    start = 1
+    start = 0
     end = n * times[len(times)-1]
     
     while start <= end:
