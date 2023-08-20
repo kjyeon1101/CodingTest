@@ -1,8 +1,11 @@
 TC = int(input())
 INF = 1e8
+
 for _ in range(TC):
   N, M, W = map(int, input().split())
   edges = []
+  distance = [INF for _ in range(N+1)]
+  distance[1] = 0
   for _ in range(M):
     S, E, T = map(int, input().split())
     edges.append((S,E,T))
@@ -11,10 +14,7 @@ for _ in range(TC):
     S, E, T = map(int, input().split())
     edges.append((S,E,-T))
 
-  distance = [INF for _ in range(N+1)]
-  distance[1] = 0
   flag = 0
-  
   for i in range(N):
     for s, e, t in edges:
       if distance[e] > distance[s] + t:
